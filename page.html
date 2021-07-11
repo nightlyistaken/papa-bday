@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,13 +16,37 @@
       <br />
       Here are some songs for you!
     </h4>
-    <br />
     <br /> 
-    <center>
+    <br /> 
+    <center> 
       <button onclick="document.location = 'index.html'" class="zi-btn primary">
         Click me for Songs!
       </button>
     </center>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script><!--Confetti-->
+    <script>
+  
+      
+    function launchConfetti() {
+      // launch a few confetti from the left edge
+      confetti({
+        particleCount: 100,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+      });
+      // and launch a few from the right edge
+      confetti({
+        particleCount: 100,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+      });
+    }
+    
+ setTimeout(launchConfetti, 1000);      
+    </script>
   </body>
 </html>
+
 <!-- End of Home Page -->
