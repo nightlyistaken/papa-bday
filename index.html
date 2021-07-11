@@ -1,88 +1,155 @@
 <!DOCTYPE html>
-<html lang="en"> 
-    <!-- Hi papa! -->
+<html lang="en">
+  <head>
+    <!-- Hi papa! This is header -->
     <meta http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Birthday Player</title>
+
+    <!-- Libraries-->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@geist-ui/style@latest/dist/style.css"
     />
-  </head>
-  <body>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--End of the Libraries-->
 
+  </head>
+  <body style="width: 100%; height: 100%" class="body"><!-- Class BODY-->
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">B'day Special</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="page.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--Navbar End-->
+
+    <!--Canvas-->
     <canvas id="canvas"></canvas>
+    <!--End of Canvas-->
+
+    <!--Hidden Audio-->
+
     <audio
-      controls  
+      controls
       style="display: none"
       id="audio_source"
       src="0.mp3"
       type="audio/mp3"
-    ></audio>
-    <!-- A music selector -->
+    ></audio> 
+
+    <!--Jumbo-->
+    <div class="jumbotron text-center border border-secondary rounded-0">
+      <h1>Happy Birthday Papa!</h1>
+      <p>Ad-free High Quality Songs for Free!</p>
+      <p>
+        Adding Songs are a bit easy, so if you want more songs I can add it!
+      </p>
+    </div> 
+
+    <!--Main table-->
     <table class="zi-table">
       <thead>
         <tr>
           <th></th>
-          <th> 
-            <h4>
+          <th>
+            <h6>
               Songs
               <div class="zi-tag">Autoplay</div>
-            </h4>
+            </h6>
           </th>
-          <th><h4>Action</h4></th>
+          <th><h6>Action</h6></th>
         </tr>
       </thead>
       <tbody id="audio_selector"></tbody>
-    </table> 
+    </table>
+    <!-- Main table end!-->
+
     <br />
-    
     <br />
     <br />
+
+    <!-- Comments : Complete  -->
+
+
+    <!--Thoughts-->
     <center>
       <h3>Thoughts:</h3>
       <p class="zi-card">
         You are the best papa and teacher :) --- Dhairy & Divy
       </p>
     </center>
-    <br /><br />
-    <center>
-      <span class="zi-avatar single">
-        <span class="zi-avatar-string">JS</span> </span
-      > by Divy and dhairy, HTML only from Dhairy becoz i want the credit :D
-    </center>
+    <br /><br /><br />
+    <!--Card-->
+    <div class="zi-card pin"> 
+      <h6>
+        How was the suprise? Liked it? If yes how did you like it wasnt that
+        good lol
+      </h6>
+    </div>
+    <br />
+    <br />
   </body>
+  <!--Style-->
   <style>
     .active {
       background-color: #eee;
     }
     canvas {
-        position:absolute;
-        height:100%; width:100%;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+    .body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+  <!--Style end!-->
+
+  <!--Script-->
   <script>
-   
     const audio = document.getElementById("audio_source");
     const tbody = document.getElementById("audio_selector");
 
     const playlist = [
-      "Jagjit Singh, Gulzar - Phoolon Ki Tarah.mp3",
-      "Jagjit Singh - Benam sa ye Dard.mp3",
-      "Jagjit Singh - Pyaar Ka Pehla Khat.mp3",
-      "Mujhse Bichhad Ke Khush Rehte Ho .mp3",
-      "Tere Khushboo Mein Base Khat Ghazal.mp3",
-      "Yeh Mojeza Bhi Mohabbat Kabhi Dikhaye Mujhe.mp3 ",
-      "Jagjit Chitra - teri aankhon mein hamne kya dekha.mp3",
+      "Phoolon Ki Tarah.mp3",
+      " Benam sa ye Dard.mp3",
+      " Pyaar Ka Pehla Khat.mp3",
+      "Mujhse Bichhad Ke Khush  .mp3",
+      "Tere Khushboo Mein Base Khat .mp3",
+      "Yeh Mojeza Bhi Mohabbat .mp3 ",
+      " Teri aankhon mein hamne .mp3",
       "Kahan tum chale gaye.mp3",
-      "Zara Ahista Chal by Pankaj Udhas.mp3",
+      "Zara Ahista Chal .mp3",
     ];
 
     let currentPlaying;
-    
-    function setAudioSource(index) {// I DID
-      audio.pause(); // play list updated rename 
+
+    function setAudioSource(index) {
+      // I DID IT
+      audio.pause(); // play list updated rename
       if (currentPlaying) {
         currentPlaying.classList.remove("active");
       }
@@ -116,7 +183,7 @@
     let myCanvas = document.getElementById("canvas");
     let myConfetti = confetti.create(myCanvas, {
       resize: true,
-      useWorker: true
+      useWorker: true,
     });
 
     function launchConfetti() {
@@ -125,30 +192,23 @@
         particleCount: 10,
         angle: 60,
         spread: 55,
-        origin: { x: 0 }
+        origin: { x: 0 },
       });
       // and launch a few from the right edge
       confetti({
         particleCount: 10,
         angle: 120,
         spread: 55,
-        origin: { x: 1 }
+        origin: { x: 1 },
       });
 
       setTimeout(confetti.clear, 1000);
     }
-    
-    setInterval(launchConfetti, 1000);
 
-    //Comments
-    //  ok now?
-    //  wow thats so coooool but stop ittt  dont lag my computer
-    //  yeh lol
-    // cool
-    // DONE DONE yaya
-    //YAY GGS gg can u see 
-    // 1 thing ; GITHUB PRIVATE REPO get access of terminal  now? can u see
-    // ok create a private repo wait lemme create a private repo bro ok
-// https://github.com/littledivy/papa-bday
+    setInterval(launchConfetti, 1000);
   </script>
+  <!--AH SCRIPT ENDDDD-->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script><!--Confetti-->
 </html>
+<!--Thank you.-->
+<!--Wriiten in html,js,bootstarp and geist UI-->
