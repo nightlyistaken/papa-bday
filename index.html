@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <!-- Hi papa! -->
+    <meta http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Player</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@geist-ui/style@latest/dist/style.css"
+    />
+  </head>
+  <body>
+
+    <canvas id="canvas"></canvas>
+    <audio
+      controls  
+      style="display: none"
+      id="audio_source"
+      src="0.mp3"
+      type="audio/mp3"
+    ></audio>
+    <!-- A music selector -->
+    <table class="zi-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th> 
+            <h4>
+              Songs
+              <div class="zi-tag">Autoplay</div>
+            </h4>
+          </th>
+          <th><h4>Action</h4></th>
+        </tr>
+      </thead>
+      <tbody id="audio_selector"></tbody>
+    </table> 
+    <br />
+    
+    <br />
+    <br />
+    <center>
+      <h3>Thoughts:</h3>
+      <p class="zi-card">
+        You are the best papa and teacher :) --- Dhairy & Divy
+      </p>
+    </center>
+    <br /><br />
+    <center>
+      <span class="zi-avatar single">
+        <span class="zi-avatar-string">JS</span> </span
+      > by Divy and dhairy, HTML only from Dhairy becoz i want the credit :D
+    </center>
+  </body>
+  <style>
+    .active {
+      background-color: #eee;
+    }
+    canvas {
+        position:absolute;
+        height:100%; width:100%;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <script>
+   
+    const audio = document.getElementById("audio_source");
+    const tbody = document.getElementById("audio_selector");
+
+    const playlist = [
+      "Jagjit Singh, Gulzar - Phoolon Ki Tarah.mp3",
+      "Jagjit Singh - Benam sa ye Dard.mp3",
+      "Jagjit Singh - Pyaar Ka Pehla Khat.mp3",
+      "Mujhse Bichhad Ke Khush Rehte Ho .mp3",
+      "Tere Khushboo Mein Base Khat Ghazal.mp3",
+      "Yeh Mojeza Bhi Mohabbat Kabhi Dikhaye Mujhe.mp3 ",
+      "Jagjit Chitra - teri aankhon mein hamne kya dekha.mp3",
+      "Kahan tum chale gaye.mp3",
+      "Zara Ahista Chal by Pankaj Udhas.mp3",
+    ];
+
+    let currentPlaying;
+    
+    function setAudioSource(index) {// I DID
+      audio.pause(); // play list updated rename 
+      if (currentPlaying) {
+        currentPlaying.classList.remove("active");
+      }
+      audio.src = `${index}.mp3`;
+      audio.onended = () => {
+        if (index + 1 <= playlist.length) {
+          setAudioSource(index + 1);
+        } else {
+          setAudioSource(0);
+        }
+      };
+      const tr = document.getElementById(`${index}tr`);
+      tr.classList.add("active");
+      currentPlaying = tr;
+      audio.play();
+    }
+
+    function renderPlaylistToTable() {
+      playlist.forEach((song, index) => {
+        tbody.innerHTML += `
+            <tr id="${index + "tr"}"> 
+                <td>${index}</td>
+                <td>${song.split(".mp3")[0]}</td>
+                <td>
+                    <button class="zi-btn primary mini shadow" onclick="setAudioSource(${index})">Play</button>
+                </td>
+            </tr>`;
+      });
+    }
+    renderPlaylistToTable();
+    let myCanvas = document.getElementById("canvas");
+    let myConfetti = confetti.create(myCanvas, {
+      resize: true,
+      useWorker: true
+    });
+
+    function launchConfetti() {
+      // launch a few confetti from the left edge
+      confetti({
+        particleCount: 10,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 }
+      });
+      // and launch a few from the right edge
+      confetti({
+        particleCount: 10,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 }
+      });
+
+      setTimeout(confetti.clear, 1000);
+    }
+    
+    setInterval(launchConfetti, 1000);
+
+    //Comments
+    //  ok now?
+    //  wow thats so coooool but stop ittt  dont lag my computer
+    //  yeh lol
+    // cool
+    // DONE DONE BOI
+    //YAY GGS gg can u see 
+    // 1 thing ; GITHUB PRIVATE REPO get access of terminal asdasd ads as dsad asd 
+    // ok create a private repo wait lemme create a private repo bro ok
+
+  </script>
+</html>
