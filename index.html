@@ -87,7 +87,7 @@
  <h4>View only!</h4>
 <audio
       controls
-      
+       controlsList="nodownload"
       id="audio_source"
       src="0.mp3"
       type="audio/mp3"
@@ -116,30 +116,19 @@
   </style>
 
   <!--Style end!-->
-  
+  <script src="./playlist.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script><!--Confetti-->
   <!--Script-->
   <script>
     const audio = document.getElementById("audio_source");
     const tbody = document.getElementById("audio_selector");
-
-    const playlist = [
-      "Phoolon Ki Tarah.mp3",
-      " Benam sa ye Dard.mp3",
-      " Pyaar Ka Pehla Khat.mp3",
-      "Mujhse Bichhad Ke Khush  .mp3",
-      "Tere Khushboo Mein Base Khat .mp3",
-      "Yeh Mojeza Bhi Mohabbat .mp3 ",
-      " Teri aankhon mein hamne .mp3",
-      "Kahan tum chale gaye.mp3",
-      "Zara Ahista Chal .mp3",
-      "Chori - Chori.mp3",
-    ];
+// add songs here
+    
 
     let currentPlaying;
 
     function setAudioSource(index) {
-      // I DID IT
+      
       audio.pause(); // play list updated rename
       if (currentPlaying) {
         currentPlaying.classList.remove("active");
@@ -198,6 +187,7 @@
 
     setInterval(launchConfetti, 1000);
   </script>
+
   <!--AH SCRIPT ENDDDD-->
 </html>
 <!--Thank you.-->
