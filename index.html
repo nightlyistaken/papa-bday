@@ -50,14 +50,7 @@
 
     <!--Hidden Audio-->
 
-    <audio
-      controls
-      style="display: none"
-      id="audio_source"
-      src="0.mp3"
-      type="audio/mp3"
-    ></audio> 
-
+    
     <!--Jumbo-->
     <div class="jumbotron text-center border border-secondary rounded-0">
       <h1>Happy Birthday Papa!</h1>
@@ -90,25 +83,21 @@
     <br />
 
     <!-- Comments : Complete  -->
-
-
-    <!--Thoughts-->
-    <center>
-      <h3>Thoughts:</h3>
-      <p class="zi-card">
-        You are the best papa and teacher :) --- Dhairy & Divy
-      </p>
+<center>
+ <h4>View only!</h4>
+<audio
+      controls
+      
+      id="audio_source"
+      src="0.mp3"
+      type="audio/mp3"
+    ></audio> 
     </center>
-    <br /><br /><br />
-    <!--Card-->
-    <div class="zi-card pin"> 
-      <h6>
-        How was the suprise? Liked it? If yes how did you like it wasnt that
-        good lol
-      </h6>
-    </div>
-    <br />
-    <br />
+<br>
+
+    <!--Removed Thoughts-->
+
+    
   </body>
   <!--Style-->
   <style>
@@ -144,6 +133,7 @@
       " Teri aankhon mein hamne .mp3",
       "Kahan tum chale gaye.mp3",
       "Zara Ahista Chal .mp3",
+      "Chori - Chori.mp3",
     ];
 
     let currentPlaying;
@@ -190,14 +180,14 @@
     function launchConfetti() {
       // launch a few confetti from the left edge
       confetti({
-        particleCount: 10,
+        particleCount: 7,
         angle: 60,
         spread: 55,
         origin: { x: 0 },
       });
       // and launch a few from the right edge
       confetti({
-        particleCount: 10,
+        particleCount: 7,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
